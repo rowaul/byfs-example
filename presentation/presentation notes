@@ -1,0 +1,12 @@
+It was requested that we include two potential solutions. 
+It was also requested that we interview potential participants with
+	regards to our proposed solutions.
+
+Points to hit on the presentation
+	* What benefits do our proposed frameworks offer? Drawbacks?
+	* What will the vendors need in order to upload their information 
+		to the system? (not much)
+    * What role does tokenization play in each framework?
+    * Will it be possible to keep sensitive information private? (yes)
+    * What kind of feedback did we get from the interviewees?
+    * How does IBM Food Trust work? (at a high level)
