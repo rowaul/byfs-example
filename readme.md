@@ -21,4 +21,4 @@ Must consider:
 - Ease of use
 - And much more!
 
-![Project Logo](https://github.com/rowaul/byfs-example/project-logo.png)
+![Project Logo](https://github.com/rowaul/byfs-example/blob/master/project-logo.png "logo!")
