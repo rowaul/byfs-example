@@ -18,8 +18,8 @@ We need to build a power point demonstrating these points <br>
 -possible non tech solutions<br>
 -possible tech solutions<br>
 *Project 2<br>
--possilbe non tech solutions <br>
--possilbe tech solutions <br>
+-possible non tech solutions <br>
+-possible tech solutions <br>
 
 ### Project 1
 We need to build a user interface based on react.js<br>
