@@ -31,7 +31,7 @@ Express server will create input for L&M private server and IFT<br>
 We create a BLOCKCHAIN <br>
 MUAHAHHHAAHHAHAHAHAHHAHA<br>
 create a middle regulator between L&M chain and IFT<br>
-L&M chain will provide continous updates and allows incentiving <br>
+L&M chain will provide continous updates and allows incentivizing <br>
 FUSION!!!!<br>
 L&M will then craete IFT records for WALMART<br>
 
