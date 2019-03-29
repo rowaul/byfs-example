@@ -33,6 +33,6 @@ MUAHAHHHAAHHAHAHAHAHHAHA<br>
 create a middle regulator between L&M chain and IFT<br>
 L&M chain will provide continous updates and allows incentivizing <br>
 FUSION!!!!<br>
-L&M will then craete IFT records for WALMART<br>
+L&M will then create IFT records for WALMART<br>
 
 
