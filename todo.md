@@ -18,7 +18,7 @@ We need to build a power point demonstrating these points
 -possible non tech solutions
 -possible tech solutions
 *Project 2
--possilbe non tech solutions
+-possilbe non tech solutions <br>
 -possilbe tech solutions <br>
 
 ### Project 1
