@@ -19,7 +19,7 @@ We need to build a power point demonstrating these points
 -possible tech solutions
 *Project 2
 -possilbe non tech solutions
--possilbe tech solutions
+-possilbe tech solutions <br>
 
 ### Project 1
 We need to build a user interface based on react.js
