@@ -40,6 +40,18 @@ class Navbar extends Component {
               >
                 Home <span className="sr-only">(current)</span>
               </a>
+              <a
+                className="nav-item nav-link active"
+                href="http://localhost:3000"
+              >
+                Help <span className="sr-only">(current)</span>
+              </a>
+              <a
+                className="nav-item nav-link active"
+                href="http://localhost:3000"
+              >
+                About <span className="sr-only">(current)</span>
+              </a>
             </div>
           </div>
         </nav>
