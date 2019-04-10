@@ -13,14 +13,14 @@ const myhost = "0.0.0.0";
 app.use(express.json());
 
 const template = {
-  name: "",
-  company: "",
-  date: "",
+  name: "test",
+  company: "test",
+  date: "test",
   product: {
-    prodName: "",
-    prodCount: "",
-    prodID: "",
-    prodLoc: ""
+    prodName: "test",
+    prodCount: "test",
+    prodID: "test",
+    prodLoc: "test"
   }
 };
 app.get("/", (req, res) => {
