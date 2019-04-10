@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 
+const myName = {
+  name: "johnnie"
+}
+
 class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: "",
       company: "",
+      address: "",
       date: "",
       product: {
         prodName: "",
@@ -14,14 +19,14 @@ class Form extends Component {
         prodLoc: ""
       }
     };
-    this.updateNCD = this.updateNCD.bind(this);
+    this.updateNCAD = this.updateNCAD.bind(this);
     this.updatePN = this.updatePN.bind(this);
     this.updatePC = this.updatePC.bind(this);
     this.updatePID = this.updatePID.bind(this);
     this.updatePL = this.updatePL.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  updateNCD(e) {
+  updateNCAD(e) {
     const target = e.target;
 
     this.setState({
@@ -77,14 +82,27 @@ class Form extends Component {
     });
   }
   handleSubmit(e) {
-    const thing = this.state;
-    console.log(thing);
+    fetch("http://localhost:4000", {
+      method: "POST",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(myName),
+      mode: "no-cors"
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log("Request failed", error);
+      });
     e.preventDefault();
   }
   render() {
     return (
       <>
-        <div className="container-fluid p-3 ">
+        <div className="container-fluid p-3">
           <form onSubmit={this.handleSubmit}>
             <div className="row">
               <div className="col-md-6">
@@ -96,7 +114,7 @@ class Form extends Component {
                     name="name"
                     id="name"
                     placeholder="Name"
-                    onChange={this.updateNCD}
+                    onChange={this.updateNCAD}
                   />
                 </div>
                 <div className="form-group">
@@ -107,7 +125,7 @@ class Form extends Component {
                     name="company"
                     id="company"
                     placeholder="Company"
-                    onChange={this.updateNCD}
+                    onChange={this.updateNCAD}
                   />
                 </div>
                 <div className="form-group">
@@ -118,7 +136,7 @@ class Form extends Component {
                     name="address"
                     id="address"
                     placeholder="Street, City, State, Zip"
-                    onChange={this.updateNCD}
+                    onChange={this.updateNCAD}
                   />
                 </div>
                 <div className="form-group">
@@ -129,7 +147,7 @@ class Form extends Component {
                     name="date"
                     id="date"
                     placeholder="yyyy-mm-dd"
-                    onChange={this.updateNCD}
+                    onChange={this.updateNCAD}
                   />
                 </div>
               </div>
