@@ -1,23 +1,39 @@
-
-
 // jshint esverion: 6
 
-const express = require('express');
-const path = require('path');
-const fs = require('file-system');
+const express = require("express");
+const path = require("path");
+const fs = require("file-system");
 
 //sample
 const app = express();
 
-const port = 4000;
-const myhost = '0.0.0.0';
+const port = 3050;
+const myhost = "0.0.0.0";
 
-app.get('/', (req, res) => {
-    console.log('Sent res on how to struct data');
-    res.send('Some response');
+app.use(express.json());
+
+const template = {
+  name: "",
+  company: "",
+  date: "",
+  product: {
+    prodName: "",
+    prodCount: "",
+    prodID: "",
+    prodLoc: ""
+  }
+};
+app.get("/", (req, res) => {
+  console.log("Sent res on how to struct data\n\n");
+  console.log(template);
+  res.send(template);
+});
+
+app.post("/", (req, res) => {
+  console.log(req.body);
+  res.send(req.body);
 });
 
 app.listen(port, myhost, () => {
-    console.log(`Server is listening at ${myhost}:${port}...`);
+  console.log(`Server is listening at ${myhost}:${port}...`);
 });
-
