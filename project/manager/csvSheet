@@ -1,4 +1,15 @@
-ConsumerId,Name,Product,Sale
-1,j,j,some value
-2,jasdf,j,some value
-3,j1234515,j,some value
+Consumer ID,Name,Product ID,
+1,amelia,adf,some value
+2
+1,amelia,,adf,asdf
+2,amelia,,adf,asdf
+3,amelia,,adf,asdf
+4,amelia,,adf,asdf
+5,amelia,,adf,asdf
+6,amelia,,adf,asdf
+7,amelia,,adf,asdf
+8,amelia,,adf,asdf
+9,amelia,,adf,asdf
+10,amelia,,adf,asdf
+11,amelia,,adf,asdfalue
+11,amelia,adf,some value

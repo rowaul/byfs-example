@@ -35,13 +35,23 @@ const template = {
 };
 
 const workbook = new Excel.Workbook();
-const sheet = workbook.addWorksheet("All request");
+const sheet = workbook.addWorksheet("L&M consumers");
 sheet.columns = [
   { header: "ConsumerId", key: "id", width: 10 },
   { header: "Name", key: "name", width: 30 },
   { header: "Product", key: "product", width: 30, outlineLevel: 1 },
   { header: "Sale", key: "sale", width: 20, outlineLevel: 1 }
 ];
+const iftWorkbook = new Excel.Workbook();
+const iftSheet = iftWorkbook.addWorksheet("IFT files");
+iftSheet.columns = [
+  { header: "Consumer ID", key: "id", width: 10 },
+  { header: "Name", key: "name", width: 30 },
+  { header: "Product ID", key: "productId", width: 30, outlineLevel: 1 },
+  { header: "Product Name", key: "productName", width: 20, outlineLevel: 1 },
+  { header: "Product Count", key: "productCount", width: 20, outlineLevel: 1 }
+];
+
 let rowCounter = 1;
 
 app.get("/", (req, res) => {
@@ -59,11 +69,25 @@ app.post("/", (req, res) => {
     product: req.body.product.prodName,
     sale: "some value"
   });
-  workbook.xlsx.writeFile("xlsxSheet").then(() => {
-    console.log("updated File, ourPrduct");
+  workbook.xlsx.writeFile("LM-xlsxSheet").then(() => {
+    console.log("updated File, L&M xlsx");
   });
-  workbook.csv.writeFile("csvSheet").then(() => {
-    console.log("updated File, csv");
+  workbook.csv.writeFile("LM-csvSheet").then(() => {
+    console.log("updated File, L&M csv");
+  });
+
+  iftSheet.addRow({
+    id: rowCounter,
+    name: req.body.name,
+    productId: req.body.product.prodId,
+    productName: req.body.product.prodName,
+    productCount: req.body.product.prodCount
+  });
+  iftWorkbook.xlsx.writeFile("IFT-xlsxSheet").then(() => {
+    console.log("updated File, ift xlsx");
+  });
+  iftWorkbook.csv.writeFile("IFT-csvSheet").then(() => {
+    console.log("updated File, ift csv");
   });
 
   rowCounter++;
