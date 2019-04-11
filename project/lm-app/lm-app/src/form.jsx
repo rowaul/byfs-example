@@ -1,4 +1,11 @@
 import React, { Component } from "react";
+const request = require("request");
+
+// Add things to form like
+// purchase subtotoal
+// discount code
+// recipt nubmer
+// purchase total
 
 class Form extends Component {
   constructor(props) {
@@ -6,22 +13,33 @@ class Form extends Component {
     this.state = {
       name: "",
       company: "",
+      address: "",
       date: "",
       product: {
         prodName: "",
         prodCount: "",
         prodID: "",
         prodLoc: ""
+      },
+      order: {
+        subtotal: "",
+        disCode: "",
+        receipt: "",
+        total: ""
       }
     };
-    this.updateNCD = this.updateNCD.bind(this);
+    this.updateNCAD = this.updateNCAD.bind(this);
     this.updatePN = this.updatePN.bind(this);
     this.updatePC = this.updatePC.bind(this);
     this.updatePID = this.updatePID.bind(this);
     this.updatePL = this.updatePL.bind(this);
+    this.updateOD = this.updateOD.bind(this);
+    this.updateOR = this.updateOR.bind(this);
+    this.updateOS = this.updateOS.bind(this);
+    this.updateOT = this.updateOT.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  updateNCD(e) {
+  updateNCAD(e) {
     const target = e.target;
 
     this.setState({
@@ -76,18 +94,80 @@ class Form extends Component {
       }
     });
   }
+  updateOD(e) {
+    const target = e.target;
+
+    this.setState({
+      order: {
+        subtotal: this.state.order.subtotal,
+        disCode: target.value,
+        receipt: this.state.order.receipt,
+        total: this.state.order.total
+      }
+    });
+  }
+  updateOR(e) {
+    const target = e.target;
+
+    this.setState({
+      order: {
+        subtotal: this.state.order.subtotal,
+        disCode: this.state.order.disCode,
+        receipt: target.value,
+        total: this.state.order.total
+      }
+    });
+  }
+  updateOS(e) {
+    const target = e.target;
+
+    this.setState({
+      order: {
+        subtotal: target.value,
+        disCode: this.state.order.disCode,
+        receipt: this.state.order.receipt,
+        total: this.state.order.total
+      }
+    });
+  }
+  updateOT(e) {
+    const target = e.target;
+
+    this.setState({
+      order: {
+        subtotal: this.state.order.subtotal,
+        disCode: this.state.order.disCode,
+        receipt: this.state.order.receipt,
+        total: target.value
+      }
+    });
+  }
   handleSubmit(e) {
-    const thing = this.state;
-    console.log(thing);
+    request(
+      {
+        url: "http://0.0.0.0:4000",
+        method: "POST",
+        json: this.state
+      },
+      (error, res, body) => {
+        if (!error && res.statusCode === 200) {
+          console.log(body);
+        } else {
+          console.log("error: " + error);
+          console.log("response.statusCode: " + res.statusCode);
+          console.log("response.statusText: " + res.statusText);
+        }
+      }
+    );
     e.preventDefault();
   }
   render() {
     return (
       <>
-        <div className="container-fluid p-3 ">
+        <div className="container-fluid">
           <form onSubmit={this.handleSubmit}>
             <div className="row">
-              <div className="col-md-6">
+              <div className="col-md-6 mt-3">
                 <div className="form-group">
                   <label htmlFor="name">Name:</label>
                   <input
@@ -96,7 +176,7 @@ class Form extends Component {
                     name="name"
                     id="name"
                     placeholder="Name"
-                    onChange={this.updateNCD}
+                    onChange={this.updateNCAD}
                   />
                 </div>
                 <div className="form-group">
@@ -107,7 +187,7 @@ class Form extends Component {
                     name="company"
                     id="company"
                     placeholder="Company"
-                    onChange={this.updateNCD}
+                    onChange={this.updateNCAD}
                   />
                 </div>
                 <div className="form-group">
@@ -118,7 +198,7 @@ class Form extends Component {
                     name="address"
                     id="address"
                     placeholder="Street, City, State, Zip"
-                    onChange={this.updateNCD}
+                    onChange={this.updateNCAD}
                   />
                 </div>
                 <div className="form-group">
@@ -129,11 +209,11 @@ class Form extends Component {
                     name="date"
                     id="date"
                     placeholder="yyyy-mm-dd"
-                    onChange={this.updateNCD}
+                    onChange={this.updateNCAD}
                   />
                 </div>
               </div>
-              <div className="col-md-6">
+              <div className="col-md-6 mt-3">
                 <div className="form-group">
                   <label htmlFor="prodName">Product:</label>
                   <input
@@ -176,6 +256,56 @@ class Form extends Component {
                     id="prodCount"
                     placeholder="Count"
                     onChange={this.updatePC}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="row mt-4">
+              <div className="col-md-6">
+                <div className="form-group">
+                  <label htmlFor="subtotal">Order subtotal:</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="subtotal"
+                    id="subtotal"
+                    placeholder="Amount in USD"
+                    onChange={this.updateOS}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="disCode">Discount code:</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="disCode"
+                    id="disCode"
+                    placeholder="i.e. DC-4231-A"
+                    onChange={this.updateOD}
+                  />
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="form-group">
+                  <label htmlFor="total">Order total:</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="total"
+                    id="total"
+                    placeholder="Amount in USD"
+                    onChange={this.updateOT}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="receipt">Receipt number:</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="receipt"
+                    id="receipt"
+                    placeholder="i.e. 152462521"
+                    onChange={this.updateOR}
                   />
                 </div>
               </div>

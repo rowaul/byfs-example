@@ -1,0 +1,5 @@
+ConsumerId,Name,Product,Sale
+1,Roberto,Carrots,some value
+2,,,some value
+3,,,some value
+4,Joe Farmer,Carrots,some value
