@@ -1,18 +1,11 @@
 import React, { Component } from "react";
 const request = require("request");
 
-const tempData = {
-  name: "",
-  company: "",
-  address: "",
-  date: "",
-  product: {
-    prodName: "",
-    prodCount: "",
-    prodID: "",
-    prodLoc: ""
-  }
-};
+// Add things to form like
+// purchase subtotoal
+// discount code
+// recipt nubmer
+// purchase total
 
 class Form extends Component {
   constructor(props) {
