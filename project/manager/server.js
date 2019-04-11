@@ -7,7 +7,7 @@ const fs = require("file-system");
 //sample
 const app = express();
 
-const port = 3050;
+const port = 4000;
 const myhost = "0.0.0.0";
 
 app.use(express.json());
@@ -30,8 +30,8 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", (req, res) => {
-  console.log(req.body);
-  res.send(req.body);
+  console.log(req);
+  res.send(req);
 });
 
 app.listen(port, myhost, () => {

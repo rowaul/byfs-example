@@ -1,9 +1,5 @@
 import React, { Component } from "react";
 
-const myName = {
-  name: "johnnie"
-}
-
 class Form extends Component {
   constructor(props) {
     super(props);
@@ -82,21 +78,20 @@ class Form extends Component {
     });
   }
   handleSubmit(e) {
-    fetch("http://localhost:4000", {
-      method: "POST",
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(myName),
-      mode: "no-cors"
-    })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((error) => {
-        console.log("Request failed", error);
+    (async () => {
+      const rawResponse = await fetch('http://localhost:4000', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        mode: "no-cors",
+        body: JSON.stringify(this.state)
       });
+      const content = await rawResponse.json();
+    
+      console.log(content);
+    })();
     e.preventDefault();
   }
   render() {
