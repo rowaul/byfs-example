@@ -10,6 +10,15 @@ const app = express();
 const port = 4000;
 const myhost = "0.0.0.0";
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
 app.use(express.json());
 
 const template = {
@@ -30,8 +39,8 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", (req, res) => {
-  console.log(req);
-  res.send(req);
+  console.log(req.body);
+  res.send(req.body);
 });
 
 app.listen(port, myhost, () => {

@@ -1,4 +1,18 @@
 import React, { Component } from "react";
+const request = require("request");
+
+const tempData = {
+  name: "",
+  company: "",
+  address: "",
+  date: "",
+  product: {
+    prodName: "",
+    prodCount: "",
+    prodID: "",
+    prodLoc: ""
+  }
+};
 
 class Form extends Component {
   constructor(props) {
@@ -78,20 +92,22 @@ class Form extends Component {
     });
   }
   handleSubmit(e) {
-    (async () => {
-      const rawResponse = await fetch('http://localhost:4000', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        mode: "no-cors",
-        body: JSON.stringify(this.state)
-      });
-      const content = await rawResponse.json();
-    
-      console.log(content);
-    })();
+    request(
+      {
+        url: "http://0.0.0.0:4000",
+        method: "POST",
+        json: this.state
+      },
+      (error, res, body) => {
+        if (!error && res.statusCode === 200) {
+          console.log(body);
+        } else {
+          console.log("error: " + error);
+          console.log("response.statusCode: " + res.statusCode);
+          console.log("response.statusText: " + res.statusText);
+        }
+      }
+    );
     e.preventDefault();
   }
   render() {
