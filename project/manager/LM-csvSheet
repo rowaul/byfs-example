@@ -1,21 +1,5 @@
 ConsumerId,Name,Product,Sale
-1,amelia,adf,some value
-2,amelia,adf,some value
-3,amelia,adf,some value
-4,amelia,adf,some value
-5,amelia,adf,some value
-6,amelia,adf,some value
-7,amelia,adf,some value
-8,amelia,adf,some value
-9,amelia,adf,some value
-10,amelia,adf,some value
-11,amelia,adf,some value
-12,amelia,adf,some value
-13,amelia,adf,some value
-14,amelia,adf,some value
-15,amelia,adf,some value
-16,amelia,adf,some value
-17,amelia,adf,some value
-18,amelia,adf,some value
-19,amelia,adf,some value
-20,amelia,adf,some value
+1,Roberto,Carrots,some value
+2,,,some value
+3,,,some value
+4,Joe Farmer,Carrots,some value
